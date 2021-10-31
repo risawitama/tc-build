@@ -53,10 +53,11 @@ tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
 	--clang-vendor "$LLVM_NAME" \
 	--defines "LLVM_PARALLEL_COMPILE_JOBS=$(nproc) LLVM_PARALLEL_LINK_JOBS=$(nproc) CMAKE_C_FLAGS=-O3 CMAKE_CXX_FLAGS=-O3" \
 	--projects "clang;lld;polly" \
-	--targets "ARM;AArch64;X86" \
+	--targets "ARM;AArch64" \
 	--shallow-clone \
 	--incremental \
 	--lto full \
+	--install-stage1-only \
 	--build-type "Release" 2>&1 | tee build.log
 
 # Check if the final clang binary exists or not.
@@ -69,7 +70,7 @@ tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
 # Build binutils
 msg "$LLVM_NAME: Building binutils..."
 tg_post_msg "<b>$LLVM_NAME: Building Binutils. . .</b>"
-./build-binutils.py --targets arm aarch64 x86_64
+./build-binutils.py --targets arm aarch64
 
 # Remove unused products
 rm -fr install/include
