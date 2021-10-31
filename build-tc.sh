@@ -56,7 +56,6 @@ tg_post_msg "<b>$LLVM_NAME: Building LLVM. . .</b>"
 	--targets "ARM;AArch64" \
 	--shallow-clone \
 	--incremental \
-	--lto full \
 	--install-stage1-only \
 	--build-type "Release" 2>&1 | tee build.log
 
