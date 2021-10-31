@@ -22,7 +22,7 @@ def current_binutils():
     Simple getter for current stable binutils release
     :return: The current stable release of binutils
     """
-    return "binutils-2.37"
+    return "binutils-2.33.1"
 
 
 def download_binutils(folder):
@@ -48,7 +48,7 @@ def download_binutils(folder):
             "https://ftp.gnu.org/gnu/binutils/" + binutils_tarball.name
         ],
                        check=True)
-        verify_binutils_checksum(binutils_tarball)
+        # verify_binutils_checksum(binutils_tarball)
         # Extract the tarball then remove it
         subprocess.run(["tar", "-xJf", binutils_tarball.name],
                        check=True,
