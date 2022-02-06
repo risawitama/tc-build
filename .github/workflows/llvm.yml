@@ -9,6 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     environment: Actions
     steps:
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v2
+        with:
+          key: ${{ secrets.SSH_KEY }}
+          name: id_rsa
+          known_hosts: ${{ secrets.KNOWN_HOSTS }}
+          if_key_exists: ignore
       - name: Download scripts
         uses: actions/checkout@v2
 
