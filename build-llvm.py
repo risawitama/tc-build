@@ -609,7 +609,7 @@ def fetch_llvm_binutils(root_folder, llvm_folder, update, shallow, ref):
                 extra_args += ("--no-single-branch", )
         subprocess.run([
             "git", "clone", *extra_args,
-            "https://github.com/AnggaR96s/llvm-project",
+            "https://gitlab.com/AnggaR96s/llvm-project",
             llvm_folder.as_posix()
         ],
                        check=True)
