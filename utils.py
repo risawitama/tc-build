@@ -4,6 +4,7 @@
 import hashlib
 import pathlib
 import shutil
+import sys
 import subprocess
 
 
@@ -68,10 +69,15 @@ def verify_binutils_checksum(file):
             if not data:
                 break
             file_hash.update(data)
-    good_hash = "8bf0b0d193c9c010e0518ee2b2e5a830898af206510992483b427477ed178396cd210235e85fd7bd99a96fc6d5eedbeccbd48317a10f752b7336ada8b2bb826d"
+    good_hash = "68e038f339a8c21faa19a57bbc447a51c817f47c2e06d740847c6e9cc3396c025d35d5369fa8c3f8b70414757c89f0e577939ddc0d70f283182504920f53b0a3"
     if file_hash.hexdigest() != good_hash:
         raise RuntimeError(
             "binutils: SHA512 checksum does not match known good one!")
+
+
+def flush_std_err_out():
+    sys.stderr.flush()
+    sys.stdout.flush()
 
 
 def print_header(string):
@@ -89,6 +95,7 @@ def print_header(string):
         print("=", end="")
     # \033[0m resets the color back to the user's default
     print("\n\033[0m")
+    flush_std_err_out()
 
 
 def print_error(string):
@@ -97,7 +104,7 @@ def print_error(string):
     :param string: String to print
     """
     # Use bold red for error
-    print("\033[01;31m%s\n\033[0m" % string)
+    print("\033[01;31m%s\n\033[0m" % string, flush=True)
 
 
 def print_warning(string):
@@ -106,4 +113,4 @@ def print_warning(string):
     :param string: String to print
     """
     # Use bold yellow for error
-    print("\033[01;33m%s\n\033[0m" % string)
+    print("\033[01;33m%s\n\033[0m" % string, flush=True)
