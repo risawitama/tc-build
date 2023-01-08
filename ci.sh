@@ -47,6 +47,7 @@ function do_deps() {
         make \
         ninja-build \
         python3 \
+	rsync \
         texinfo \
         xz-utils \
         zlib1g-dev
