@@ -31,8 +31,8 @@ git config --global http.postBuffer 15728640
 git config --global init.defaultBranch main
 
 # Housekeeping
-git clone anggar96s@git.osdn.net:/gitroot/gengkapak/clang-GengKapak-16.git -b main rel_repo
-name="Clang-GengKapak-16-$rel_date.zip"
+git clone anggar96s@git.osdn.net:/gitroot/gengkapak/clang-GengKapak.git -b main rel_repo
+name="Clang-GengKapak-17-$rel_date.zip"
 cd rel_repo
 zip -r9 $name *
 
@@ -47,7 +47,7 @@ rm -rf .git
 git init .
 git add .
 git commit -asm "Housekeeping $rel_date build"
-git remote add origin anggar96s@git.osdn.net:/gitroot/gengkapak/clang-GengKapak-16.git
+git remote add origin anggar96s@git.osdn.net:/gitroot/gengkapak/clang-GengKapak.git
 git push --set-upstream origin main -f
 
 # Send a notificaton to TG
