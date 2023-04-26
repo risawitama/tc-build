@@ -106,7 +106,8 @@ tg_post_msg "<b>$LLVM_NAME: Toolchain compilation Finished</b>%0A<b>Clang Versio
 git config --global user.name $GH_USERNAME
 git config --global user.email $GH_EMAIL
 git config --global http.postBuffer 15728640
-git clone anggar96s@git.osdn.net:/gitroot/gengkapak/clang-GengKapak.git -b main rel_repo
+# git clone anggar96s@git.osdn.net:/gitroot/gengkapak/clang-GengKapak.git -b main rel_repo
+git clone ssh://badjingan@git.code.sf.net/p/gengkapak/clang-gengkapak.git -b main rel_repo
 pushd rel_repo || exit
 rm -fr ./*
 cp -r ../install/* .
